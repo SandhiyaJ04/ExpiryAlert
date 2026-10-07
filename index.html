@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpiryAlert - Food Expiry Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span>🥕</span> ExpiryAlert
+        </div>
+
+        <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#add-food">Add Food</a>
+            <a href="#food-list">My Food</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="dashboard">
+        <div class="hero-text">
+            <p class="tagline">SMART FOOD MANAGEMENT</p>
+            <h1>Don't let good food <span>go to waste.</span></h1>
+
+            <p>
+                Track your food items, monitor expiry dates and use
+                your groceries before they go bad.
+            </p>
+
+            <a href="#add-food" class="hero-btn">+ Add Food Item</a>
+        </div>
+
+        <div class="hero-card">
+            <div class="food-icon">🥗</div>
+            <h3>Eat Smart. Waste Less.</h3>
+            <p>Keep track of what's in your kitchen.</p>
+        </div>
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="stats-section">
+
+        <div class="stat-card">
+            <div class="stat-icon blue">🍱</div>
+            <div>
+                <h2 id="totalItems">0</h2>
+                <p>Total Items</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon green">✅</div>
+            <div>
+                <h2 id="freshItems">0</h2>
+                <p>Fresh Items</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon orange">⚠️</div>
+            <div>
+                <h2 id="soonItems">0</h2>
+                <p>Expiring Soon</p>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon red">❌</div>
+            <div>
+                <h2 id="expiredItems">0</h2>
+                <p>Expired</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Add Food -->
+    <section class="section" id="add-food">
+
+        <div class="section-heading">
+            <p class="small-title">FOOD INVENTORY</p>
+            <h2>Add Food Item</h2>
+            <p>Enter your food details to start tracking expiry dates.</p>
+        </div>
+
+        <div class="form-card">
+
+            <form id="foodForm">
+
+                <div class="form-row">
+
+                    <div class="input-group">
+                        <label>Food Name</label>
+                        <input
+                            type="text"
+                            id="foodName"
+                            placeholder="Example: Milk"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label>Category</label>
+
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Dairy">🥛 Dairy</option>
+                            <option value="Fruits">🍎 Fruits</option>
+                            <option value="Vegetables">🥦 Vegetables</option>
+                            <option value="Meat">🍗 Meat</option>
+                            <option value="Bakery">🍞 Bakery</option>
+                            <option value="Beverages">🥤 Beverages</option>
+                            <option value="Grains">🌾 Grains</option>
+                            <option value="Other">📦 Other</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="input-group">
+                        <label>Quantity</label>
+
+                        <input
+                            type="text"
+                            id="quantity"
+                            placeholder="Example: 2 packets"
+                            required
+                        >
+                    </div>
+
+                    <div class="input-group">
+                        <label>Expiry Date</label>
+
+                        <input
+                            type="date"
+                            id="expiryDate"
+                            required
+                        >
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+                    <label>Notes (Optional)</label>
+
+                    <textarea
+                        id="notes"
+                        placeholder="Example: Keep refrigerated"
+                    ></textarea>
+                </div>
+
+
+                <button type="submit" class="submit-btn">
+                    + Add Food Item
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Food List -->
+    <section class="section" id="food-list">
+
+        <div class="section-heading list-heading">
+            <div>
+                <p class="small-title">YOUR INVENTORY</p>
+                <h2>My Food Items</h2>
+            </div>
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search food..."
+                >
+
+                <select id="filterCategory">
+                    <option value="All">All Categories</option>
+                    <option value="Dairy">Dairy</option>
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                    <option value="Meat">Meat</option>
+                    <option value="Bakery">Bakery</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Other">Other</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div id="foodContainer" class="food-grid">
+            <!-- Food cards generated by JavaScript -->
+        </div>
+
+
+        <div id="emptyMessage" class="empty-message">
+            <div>🍽️</div>
+            <h3>No food items yet</h3>
+            <p>Add your first food item to start tracking expiry dates.</p>
+        </div>
+
+    </section>
+
+
+    <!-- Tips -->
+    <section class="tips-section">
+
+        <div class="tips-content">
+
+            <p class="small-title">ZERO WASTE TIPS</p>
+
+            <h2>Small changes can make a big difference 🌱</h2>
+
+            <div class="tips-grid">
+
+                <div class="tip">
+                    <span>📅</span>
+                    <h3>Check expiry dates</h3>
+                    <p>Regularly check your food inventory.</p>
+                </div>
+
+                <div class="tip">
+                    <span>❄️</span>
+                    <h3>Store properly</h3>
+                    <p>Store food under suitable conditions.</p>
+                </div>
+
+                <div class="tip">
+                    <span>🍲</span>
+                    <h3>Use leftovers</h3>
+                    <p>Turn leftovers into your next meal.</p>
+                </div>
+
+                <div class="tip">
+                    <span>🛒</span>
+                    <h3>Buy only what you need</h3>
+                    <p>Avoid unnecessary food purchases.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <h3>🥕 ExpiryAlert</h3>
+        <p>Track food. Reduce waste. Build a sustainable future.</p>
+        <p class="copyright">
+            © 2026 ExpiryAlert | MCA Web Technology Project
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
